@@ -17,11 +17,6 @@ services:
     networks:
       alwatr-public-network:
 
-    environment:
-      - NGINX_FORCE_DOMAIN=${appForceDomain:-}
-      - NGINX_ACCESS_LOG=${appAccessLog:-off}
-      - NGINX_DISALLOW_ROBOTS=${appNginxDisallowRobots:-}
-
     logging:
       driver: json-file
       options:
