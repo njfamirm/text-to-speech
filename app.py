@@ -17,44 +17,45 @@ def app():
     if uploaded_file is not None:
       file_contents = uploaded_file.read()
 
-      # Generate a hash of the file contents
+      progress_bar = st.progress(0)
+
       file_hash = hashlib.sha256(file_contents).hexdigest()
       audio_filename = f'uploades/{file_hash}.wav'
 
-      # Save the uploaded file
       with open(audio_filename, 'wb') as f:
         f.write(file_contents)
 
-      # Process the uploaded file
+      st.write('Audio file uploaded.')
+      progress_bar.progress(5)
+
+      st.write('Trimming audio...')
       client = OpenAI(api_key=openai_api_key)
       trimmed_audio, trimmed_filename = trim_start(audio_filename)
-
-      # Add a progress bar
-      progress_bar = st.progress(0)
-      st.write('Starting transcription...')
-
-      transcription = transcribe_audio(client, trimmed_filename)
+      st.write('Audio trimmed.')
       progress_bar.progress(25)
+
+      st.write('Starting transcription...')
+      transcription = transcribe_audio(client, trimmed_filename)
       st.write('Transcription completed.')
+      progress_bar.progress(50)
+      st.title('Whisper Transcription')
+      st.code(transcription, language="txt")
 
       st.write('Starting punctuation...')
       response = punctuation_assistant(client, transcription)
       punctuated_transcript = response.choices[0].message.content
-      progress_bar.progress(50)
       st.write('Punctuation completed.')
+      progress_bar.progress(75)
+      st.title('Punctuated Transcription')
+      st.code(punctuated_transcript, language="txt")
 
       st.write('Starting subject assistant...')
       response = subject_assistant(client, punctuated_transcript)
       final_transcript = response.choices[0].message.content
-      progress_bar.progress(75)
       st.write('Subject assistant completed.')
-
-      st.session_state.final_transcript = final_transcript
+      progress_bar.progress(100)
 
       st.title('Final Transcript')
-      st.text(st.session_state.final_transcript)
-
-      progress_bar.progress(100)
-      st.write('All steps completed.')
+      st.code(final_transcript, language="txt")
 
 app()
