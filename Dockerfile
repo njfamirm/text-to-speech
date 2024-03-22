@@ -2,13 +2,7 @@ FROM ghcr.io/alwatr/python:3.12.2
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    # build-essential \
-    # curl \
-    # software-properties-common \
-    # git \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ffmpeg
 
 COPY . .
 
