@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "10:30"
+    open-pull-requests-limit: 20
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    reviewers:
+      - njfamirm
+    labels:
+      - "ci"
+      - "priority-low"
+      - "maintenance"
+    groups:
+      python-packages:
+        patterns:
+          - "*"
