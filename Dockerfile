@@ -2,7 +2,16 @@ FROM ghcr.io/alwatr/python:3.12.2
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apk add --no-cache \
+    ffmpeg \
+    gcc \
+    g++ \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    make \
+    cmake
 
 COPY . .
 
