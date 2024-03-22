@@ -77,4 +77,5 @@ venv/
 env.bak/
 venv.bak/
 
-uploades
+uploades/*
+!uploades/.gitkeep
