@@ -89,12 +89,24 @@ if uploaded_file is not None:
     # Save the uploaded file
     with open('uploaded_file.wav', 'wb') as f:
         f.write(uploaded_file.getbuffer())
+    
+    # Initialize the progress bar
+    progress_bar = st.progress(0)
+
     # Process the uploaded file
     trimmed_audio, trimmed_filename = trim_start('uploaded_file.wav')
+    progress_bar.progress(25)  # Update progress bar
+
     transcription = transcribe_audio(trimmed_filename, '.')
+    progress_bar.progress(50)  # Update progress bar
+
     response = punctuation_assistant(transcription)
     punctuated_transcript = response.choices[0].message.content
+    progress_bar.progress(75)  # Update progress bar
+
     response = subject_assistant(punctuated_transcript)
     final_transcript = response.choices[0].message.content
+    progress_bar.progress(100)  # Update progress bar
+
     # Display the final transcript
     st.text_area("Text", value=final_transcript, height=200, max_chars=None)
