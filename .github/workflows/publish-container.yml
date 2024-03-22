@@ -5,9 +5,9 @@ name: Build & Publish Containers
 on:
   workflow_dispatch:
 
-  # push:
-  #   branches:
-  #     - next
+  push:
+    branches:
+      - next
 
   # pull_request:
 
