@@ -1,17 +1,14 @@
-FROM ghcr.io/alwatr/python:3.12.2
+FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y \
+    build-essential \
     ffmpeg \
-    gcc \
-    g++ \
-    musl-dev \
-    python3-dev \
-    libffi-dev \
-    openssl-dev \
-    make \
-    cmake
+    curl \
+    software-properties-common \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
