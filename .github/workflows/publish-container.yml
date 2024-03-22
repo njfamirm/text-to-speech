@@ -16,7 +16,7 @@ on:
       - created
 
 env:
-  USER: alwatr
+  USER: njfamirm
 
 jobs:
   build:
@@ -74,7 +74,7 @@ jobs:
             type=ref,enable=true,event=branch
           labels: |
             org.opencontainers.image.title="njfamirm/${{matrix.name}}"
-            org.opencontainers.image.vendor="Alwatr"
+            org.opencontainers.image.vendor="njfamirm"
             org.opencontainers.image.documentation="https://github.com/njfamirm/text-to-speech"
             org.opencontainers.image.authors="S. Amir Mohammad Najafi <njfamirm@gmail.com> (https://www.njfamirm.ir)"
 
