@@ -1,6 +1,6 @@
 import streamlit as st
 from audio import trim_start
-from openai import transcribe_audio, punctuation_assistant, subject_assistant
+from openai_api import transcribe_audio, punctuation_assistant, subject_assistant
 import hashlib
 from openai import OpenAI
 
