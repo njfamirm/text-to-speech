@@ -76,6 +76,7 @@ celerybeat.pid
 venv/
 env.bak/
 venv.bak/
+.env
 
 uploades/*
 !uploades/.gitkeep
