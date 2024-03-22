@@ -1,5 +1,6 @@
 from pathlib import Path
 from pydub import AudioSegment
+from pydub.utils import mediainfo
 
 # Function to detect leading silence
 def milliseconds_until_sound(sound, silence_threshold_in_decibels=-20.0, chunk_size=10):
@@ -11,14 +12,15 @@ def milliseconds_until_sound(sound, silence_threshold_in_decibels=-20.0, chunk_s
 
     return trim_ms
 
-# Function to trim start of audio
+# trim start of audio
 def trim_start(filepath):
     path = Path(filepath)
     directory = path.parent
     filename = path.name
-    audio = AudioSegment.from_file(filepath, format="wav")
+    file_format = mediainfo(filepath)['format_name']
+    audio = AudioSegment.from_file(filepath, format=file_format)
     start_trim = milliseconds_until_sound(audio)
     trimmed = audio[start_trim:]
     new_filename = directory / f"trimmed-{filename}"
-    trimmed.export(new_filename, format="wav")
+    trimmed.export(new_filename, format=file_format)
     return trimmed, new_filename
