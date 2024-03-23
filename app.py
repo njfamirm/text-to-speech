@@ -58,4 +58,6 @@ def app():
       st.title('Final Transcript')
       st.code(final_transcript, language="txt")
 
+      st.balloons()
+
 app()
