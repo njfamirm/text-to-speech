@@ -1,7 +1,10 @@
+import logging
 from pathlib import Path
 from os import path
 from pydub import AudioSegment
 from pydub.utils import mediainfo
+
+logger = logging.getLogger(__name__)
 
 # Function to detect leading silence
 def milliseconds_until_sound(sound, silence_threshold_in_decibels=-20.0, chunk_size=10):
@@ -24,6 +27,7 @@ def trim_start(filepath):
     trimmed = audio[start_trim:]
     new_filename = directory / f"trimmed-{filename}"
     trimmed.export(new_filename, format=file_format)
+    logger.info(f'Trimmed audio saved as {new_filename}')
     return trimmed, new_filename
 
 def split_audio(filepath):
@@ -40,13 +44,12 @@ def split_audio(filepath):
     file_name_list = []
     while start < len(audio):
         end += threshold
-        print("start", start)
-        print("end", end)
         chunk = audio[start:end]
         # Add chunk index at the start of the filename
         chunk_filename = path.join(directory, f"{counter}-{filename}")
         file_name_list.append(chunk_filename)
         chunk.export(chunk_filename, format=audio_format)
+        logger.info(f'Chunk {counter} saved as {chunk_filename}')
         counter += 1
         start += threshold
 
