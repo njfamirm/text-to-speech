@@ -8,9 +8,9 @@ services:
   app:
     image: $appImage
 
-    cpu_count: 1
-    cpu_shares: 1024
-    mem_limit: 256m
+    # cpu_count: 1
+    # cpu_shares: 1024
+    # mem_limit: 256m
 
     restart: unless-stopped
 
