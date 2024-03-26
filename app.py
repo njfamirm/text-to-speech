@@ -33,7 +33,6 @@ def app():
   st.title('Speech to text app')
 
   with st.form(key='process_form'):
-    progress_bar = st.progress(0)
 
     default_openai_api_key = getenv('OPENAI_API_KEY')
     openai_api_key = st.text_input("OpenAI API Key", value=default_openai_api_key, type="password")
@@ -54,12 +53,10 @@ def app():
         f.write(file_contents)
 
       logger.info('Audio file stored.')
-      progress_bar.progress(5)
 
       logger.info('Splitting audio...')
       file_names = split_audio(audio_filename)
       logger.info('Audio split.')
-      progress_bar.progress(10)
 
       client = OpenAI(api_key=openai_api_key)
 
@@ -69,20 +66,17 @@ def app():
         logger.info(f'Trimming audio chunk {index+1}...')
         trimmed_audio, trimmed_filename = trim_start(filepath)
         logger.info(f'Audio chunk {index+1} trimmed.')
-        progress_bar.progress(25)
 
         logger.info(f'Starting transcription of chunk {index+1}...')
         transcription = transcribe_audio(client, trimmed_filename)
         logger.info(f'Whisper Transcription of chunk {index+1} completed.')
         logger.info(transcription)
-        progress_bar.progress(50)
 
         logger.info(f'Starting post-process of chunk {index+1}...')
         response = post_process_assistant(client, transcription)
         punctuated_transcript = response.choices[0].message.content
         logger.info(f'Post-processed Transcription of chunk {index+1} completed.')
         logger.info(punctuated_transcript)
-        progress_bar.progress(75)
 
         final_transcript += punctuated_transcript + " "
 
