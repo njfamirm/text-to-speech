@@ -14,6 +14,8 @@ logger.setLevel(logging.DEBUG)
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
+st.set_page_config(layout="centered", page_title="Speech to text app", page_icon="🎙️")
+
 def app():
   logger.info('Starting app')
   st.title('Speech to text app')
