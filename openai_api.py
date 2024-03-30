@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 def transcribe_audio(client, audio_path):
   with open(audio_path, 'rb') as audio_data:
     logger.info('Starting transcription...')
-    transcription = client.audio.transcriptions.create(model="whisper-1", file=audio_data)
+    transcription = client.audio.transcriptions.create(model="whisper-1", file=audio_data, language="fa", prompt='')
     logger.info('Transcription completed.')
     return transcription.text
 
