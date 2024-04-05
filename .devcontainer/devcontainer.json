@@ -1,27 +1,32 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "text-to-speech",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	"build": {
+		"dockerfile": "./Dockerfile"
+	},
 	"features": {
 		"ghcr.io/devcontainers/features/sshd": {
 			"version": "latest"
 		}
 	},
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt"
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"forwardPorts": [],
+	"postCreateCommand": "pip3 install --user -r requirements.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"CodeSandbox-io.codesandbox-projects",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-azuretools.vscode-docker",
+				"streetsidesoftware.code-spell-checker",
+				"JannisX11.batch-rename-extension",
+				"ms-vscode-remote.remote-containers",
+				"redhat.vscode-yaml",
+				"ms-python.python",
+				"esbenp.prettier-vscode",
+				"christian-kohler.path-intellisense",
+				"martinwepner.pascalcase-camelcase-to-snakecase-converter"
+			]
+		}
+	}
 	// "remoteUser": "root"
 }

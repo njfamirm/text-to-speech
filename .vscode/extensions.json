@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "codesandbox-io.codesandbox-projects",
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-azuretools.vscode-docker",
+    "streetsidesoftware.code-spell-checker",
+    "jannisx11.batch-rename-extension",
+    "ms-vscode-remote.remote-containers",
+    "redhat.vscode-yaml",
+    "ms-python.python",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "martinwepner.pascalcase-camelcase-to-snakecase-converter"
+  ]
+}
