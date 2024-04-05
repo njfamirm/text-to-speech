@@ -1,3 +1,5 @@
+# https://huggingface.co/facebook/seamless-m4t-v2-large
+
 import torch
 from transformers import Wav2Vec2ForCTC, AutoProcessor, pipeline
 
