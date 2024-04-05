@@ -4,3 +4,4 @@ pydub==0.25.1
 torch==2.2.2
 transformers==4.39.3
 datasets==2.18.0
+accelerate==0.29.1
