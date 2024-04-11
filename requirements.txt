@@ -6,3 +6,4 @@ transformers==4.39.3
 datasets==2.18.0
 accelerate==0.29.1
 sentencepiece==0.2.0
+jiwer==3.0.3
