@@ -3,13 +3,7 @@
 	"build": {
 		"dockerfile": "./Dockerfile"
 	},
-	"features": {
-		"ghcr.io/devcontainers/features/sshd": {
-			"version": "latest"
-		}
-	},
-	"forwardPorts": [],
-	"postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "pip3 install --no-cache-dir -r requirements.txt",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -28,5 +22,4 @@
 			]
 		}
 	}
-	// "remoteUser": "root"
 }
