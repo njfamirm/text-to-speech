@@ -1,10 +1,10 @@
 # streamlit==1.33.0
-openai==1.17.0
+openai==1.27.0
 # pydub==0.25.1
-torch==2.2.2
-transformers==4.39.3
+torch==2.3.0
+transformers==4.40.2
 # datasets==2.18.0
-accelerate==0.29.2
+accelerate==0.30.0
 sentencepiece==0.2.0
-jiwer==3.0.3
-torchaudio==2.2.2
+jiwer==3.0.4
+torchaudio==2.3.0
